@@ -31,6 +31,7 @@ class Raindown extends ParsedownExtra
     {
         if (strpos($text, '<raindown>') !== false) {
             list($meta, $content) = explode('<raindown>', $text, 2);
+            $meta = json_decode($meta);
             return $meta;
         }
         return false;
