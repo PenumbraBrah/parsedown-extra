@@ -36,4 +36,14 @@ class Raindown extends ParsedownExtra
         }
         return false;
     }
+    
+    function storm($text)
+    {
+        if (strpos($text, '<raindown>') !== false) {
+            list($meta, $content) = explode('<raindown>', $text, 2);
+            $meta = json_decode($meta);
+            return array($meta, parent::text($content));
+        }
+        return array(false, parent::text($text));
+    }
 }
